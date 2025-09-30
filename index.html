@@ -6,57 +6,60 @@
   <title>Personality Alignment — Chaotic Good Guild</title>
   <style>
     :root{
-      --ink:#e9f3f7; --bg:#000; --muted:#9fb3bf; --brandA:#265b74; --brandB:#5d376b; --accent:#9fe0ff;
+      --ink:#e9f3f7; --muted:#9fb3bf; --brandA:#265b74; --brandB:#5d376b; --accent:#9fe0ff;
       --good:#62ffa1; --evil:#ff6a6a; --law:#7ec0ff; --chaos:#ff82ff;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; background:#000; color:var(--ink); font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+    body{margin:0; color:var(--ink); font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #2a4a60 20%, transparent 60%),
+        radial-gradient(1400px 700px at 100% 110%, #4b2b66 20%, transparent 60%),
+        conic-gradient(from 180deg at 50% 50%, rgba(40,60,90,.12), rgba(20,30,40,.08), rgba(40,60,90,.12));
+      background-color:#0c1118;
+    }
     .hidden{display:none!important}
 
-    /* HERO / LANDING */
+    /* ——— LANDING ——— */
     .hero{position:relative; min-height:100dvh; overflow:hidden; display:grid; place-items:center;}
     .prism-container{position:absolute; inset:0; z-index:0; pointer-events:none}
-    .hero-inner{position:relative; z-index:2; text-align:center; display:grid; gap:10px; align-items:center; justify-items:center}
+    .hero-inner{position:relative; z-index:2; text-align:center; display:grid; gap:6px; align-items:center; justify-items:center}
     .logo{max-width:min(90vw,820px); width:95%; filter:drop-shadow(0 30px 80px rgba(0,180,255,.18))}
-    .start{display:inline-flex; align-items:center; gap:10px; padding:14px 20px; border-radius:999px; border:1px solid #2a3e55; color:#071018; background:#dff4ff; font-weight:800; letter-spacing:.3px; text-transform:uppercase; text-decoration:none; box-shadow:0 8px 30px rgba(20,120,200,.35)}
+    .start{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:16px 22px; border-radius:999px; border:1px solid #2a3e55; color:#071018; background:#dff4ff; font-weight:800; letter-spacing:.3px; text-transform:uppercase; text-decoration:none; box-shadow:0 8px 30px rgba(20,120,200,.35); transform:translateY(-8px)}
     .start:hover{box-shadow:0 12px 40px rgba(60,160,240,.4)}
 
-    /* APP WRAPPER */
-    .app{width:min(1000px, 100%); margin:0 auto; padding:24px}
-    .header{display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:16px}
-    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:linear-gradient(90deg, #1d3f51, #1a1d2a); color:var(--muted); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.12em; border:1px solid #203244aa; box-shadow:0 0 0 1px #0b1118 inset, 0 18px 60px rgba(10,20,40,.45)}
+    /* ——— APP ——— */
+    .app{width:min(1000px, 100%); margin:0 auto; padding:28px; position:relative}
+    .app::before{content:""; position:absolute; inset:-2px; pointer-events:none; z-index:-1; background:
+      radial-gradient(600px 260px at 20% -10%, #3db2ff2a, transparent 65%),
+      radial-gradient(900px 360px at 80% 110%, #b86dff22, transparent 70%),
+      linear-gradient(135deg,#0f2027,#203a43,#2c5364)}
 
-    /* CARD */
-    .card{position:relative; background:linear-gradient(180deg, #172231, #101826); border:1px solid #203244; border-radius:22px; overflow:hidden; box-shadow:0 10px 50px rgba(0,0,0,.45)}
-    .card::before{content:""; position:absolute; inset:0; pointer-events:none; background:
-      radial-gradient(500px 120px at 50% -60px, #3db2ff22, transparent 70%),
-      radial-gradient(700px 300px at 50% 120%, #b86dff1a, transparent 60%)}
-    .content{padding:22px clamp(18px,2.6vw,28px) 24px}
+    .card{position:relative; background:linear-gradient(180deg, #111a28, #0d1521); border:1px solid #203244; border-radius:22px; overflow:hidden; box-shadow:0 20px 80px rgba(0,0,0,.55)}
+    .card::before{content:""; position:absolute; inset:-1px; border-radius:22px; padding:1px; background:linear-gradient(180deg, #2b4b66, transparent 40%, #53386a); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude}
+    .card::after{content:""; position:absolute; inset:0; pointer-events:none; background:
+      radial-gradient(500px 160px at 50% -80px, #3db2ff26, transparent 72%),
+      radial-gradient(760px 360px at 50% 120%, #b86dff1f, transparent 70%)}
+    .content{padding:28px clamp(20px,2.8vw,34px) 28px}
 
-    /* PROGRESS */
-    .progress{height:8px; background:#0e141d; border:1px solid #1e2a37; border-radius:999px; overflow:hidden; margin:8px 0 18px}
-    .bar{height:100%; width:0%; background:linear-gradient(90deg, var(--brandA), var(--brandB)); transition:width .35s ease}
+    .progress-count{text-align:center; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#a7c0d1; margin:0 0 8px}
+    .progress{height:10px; background:#0e141d; border:1px solid #233141; border-radius:999px; overflow:hidden; margin:8px 0 24px; box-shadow:inset 0 0 0 1px #0b1117}
+    .bar{height:100%; width:0%; background:linear-gradient(90deg, var(--brandA), var(--brandB)); box-shadow:0 0 18px #3aa7ff88; transition:width .35s ease}
 
-    /* QUESTION */
-    .qnum{font-weight:700; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; font-size:12px}
-    .qtext{font-size:clamp(18px,2.8vw,24px); font-weight:650; margin:8px 0 16px; opacity:0; transform:translateY(8px); animation:fadeSlide .35s ease forwards}
-    @keyframes fadeSlide{to{opacity:1; transform:translateY(0)}}
+    .question{font-size:clamp(20px,2.8vw,26px); font-weight:700; margin:6px 0 14px}
 
-    .answers{display:grid; gap:10px; grid-template-columns:repeat(2, minmax(0,1fr))}
-    .btn{position:relative; display:flex; align-items:center; justify-content:center; gap:8px; padding:14px 14px; border-radius:14px; border:1px solid #223246; cursor:pointer; user-select:none; background:linear-gradient(180deg,#0f1823,#0b1018); color:var(--ink); font-weight:600; letter-spacing:.2px; box-shadow:0 2px 0 #000, inset 0 0 0 1px #122233; transition:transform .05s ease, border-color .15s ease, box-shadow .2s ease; overflow:hidden}
-    .btn:hover{border-color:#2a4967; box-shadow:0 10px 30px rgba(40,120,200,.15), inset 0 0 0 1px #1a3a55}
+    .answers{display:grid; gap:14px; grid-template-columns:repeat(2, minmax(0,1fr)); margin-top:6px}
+    .btn{position:relative; display:flex; align-items:center; justify-content:center; padding:18px 16px; border-radius:16px; border:1px solid #223246; cursor:pointer; user-select:none; background:linear-gradient(180deg,#0f1823,#0b1018); color:#dfe9f3; font-weight:700; letter-spacing:.2px; box-shadow:0 2px 0 #000, inset 0 0 0 1px #122233; transition:transform .06s ease, border-color .15s ease, box-shadow .2s ease}
+    .btn:hover{border-color:#2a4967; box-shadow:0 12px 36px rgba(40,120,200,.18), inset 0 0 0 1px #1a3a55}
     .btn:active{transform:translateY(1px)}
-    .btn.flash::after{content:""; position:absolute; inset:0; background:radial-gradient(180px 60px at 50% 50%, #8fd3ff33, transparent 70%); animation:flash .5s ease}
-    @keyframes flash{from{opacity:1} to{opacity:0}}
 
-    .legend{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:12px; margin-top:8px}
-    .dot{width:7px; height:7px; border-radius:50%; background:var(--accent)}
+    .guild-star{display:grid; place-items:center; margin-top:18px}
+    .guild-star img{width:90px; height:auto; opacity:.75; filter:drop-shadow(0 8px 40px rgba(120,200,255,.25))}
 
-    .controls{display:flex; align-items:center; justify-content:space-between; margin-top:16px}
-    .ghost{background:transparent; border:1px dashed #2a3c51; color:#aac4d6}
+    .controls{display:flex; align-items:center; justify-content:space-between; margin-top:18px}
+    .ghost{background:linear-gradient(180deg,#0a121a,#070c12); border:1px dashed #2a3c51; color:#b8cfe0}
 
-    /* RESULTS */
+    /* RESULTS GRID */
     .results{display:none}
     .results.active{display:block}
     .grid{position:relative; width:100%; aspect-ratio:1/1; background:#0a0f15; border:1px solid #223046; border-radius:16px; overflow:hidden}
@@ -80,7 +83,6 @@
 
     .badge{position:absolute; transform:translate(-50%, calc(-100% - 10px)); padding:6px 10px; font-weight:800; border-radius:10px; font-size:12px; color:#071018; background:#dff4ff; border:1px solid #89cfff; box-shadow:0 8px 30px rgba(20,120,200,.35); white-space:nowrap}
 
-    /* simple result stats layout */
     .xy{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
     .tile{background:#0c141f; border:1px solid #1c2b3d; border-radius:12px; padding:10px}
     .tile h4{margin:0 0 6px; font-size:12px; color:#9fb3bf; letter-spacing:.08em; text-transform:uppercase}
@@ -101,32 +103,20 @@
 
   <!-- QUIZ -->
   <div class="app hidden" id="app">
-    <div class="header">
-      <div class="pill" id="pill">Question <span id="qIndex">1</span>/<span id="qTotal">—</span></div>
-    </div>
-
     <div class="card" id="quizCard">
       <div class="content">
-        <div class="qnum" id="qAxis" aria-hidden="true">&nbsp;</div>
-        <div class="qtext" id="qText">Loading…</div>
-        <div class="answers" id="answers">
-          <button class="btn" data-score="-2">Disagree</button>
-          <button class="btn" data-score="-1">Slightly Disagree</button>
-          <button class="btn" data-score="1">Slightly Agree</button>
-          <button class="btn" data-score="2">Agree</button>
-        </div>
-        <div class="legend"><span class="dot"></span><span>Tap one option per statement. Your choices are private; axis weights are hidden.</span></div>
-        <div class="progress" aria-label="progress"><div class="bar" id="bar"></div></div>
-        <div class="controls">
-          <button class="btn ghost" id="restartBtn" title="Start over">Restart</button>
-          <div style="opacity:.7; font-size:12px;">Ethics ↔ (Lawful ⇄ Chaotic) &nbsp; • &nbsp; Morality ↕ (Evil ⇅ Good)</div>
-        </div>
+        <div class="progress-count" id="counter">Question 1/28</div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <div class="question" id="question">Loading…</div>
+        <div class="answers" id="answers"></div>
+        <div class="guild-star"><img src="Guild Star.png" alt="Guild star" /></div>
+        <div class="controls"><button class="btn ghost" id="restartBtn">Restart</button></div>
       </div>
     </div>
 
     <div class="card results" id="results">
       <div class="content">
-        <div class="qtext" style="margin-top:4px">Your Alignment Plot</div>
+        <div class="question" style="margin-top:4px">Your Alignment Plot</div>
         <div class="grid" id="grid">
           <img src="CGG Graph.png" alt="Alignment grid" onerror="this.style.display='none'" />
           <div id="q1" class="quad"></div>
@@ -147,7 +137,7 @@
   </div>
 
 <script>
-  // ===== QUIZ ENGINE (binds before any background effects) =====
+  // ===== QUIZ ENGINE =====
   (function(){
     const QUESTIONS = [
       {text:"It’s better to follow clear rules than to improvise in the moment.", axis:'ethics', polarity:-1},
@@ -184,19 +174,28 @@
     let i=0; const state={ ethics:0, morality:0, answers:[] };
 
     const hero=document.getElementById('hero'); const app=document.getElementById('app'); const startBtn=document.getElementById('startBtn');
-    const qText=document.getElementById('qText'); const qIndex=document.getElementById('qIndex'); const qTotal=document.getElementById('qTotal'); const bar=document.getElementById('bar');
+    const qText=document.getElementById('question'); const counter=document.getElementById('counter'); const bar=document.getElementById('bar');
     const answersBox=document.getElementById('answers'); const quizCard=document.getElementById('quizCard'); const resultsCard=document.getElementById('results');
     const marker=document.getElementById('marker'); const badge=document.getElementById('badge'); const cross=document.getElementById('cross');
     const ethicsScore=document.getElementById('ethicsScore'); const moralityScore=document.getElementById('moralityScore'); const again=document.getElementById('again'); const restartBtn=document.getElementById('restartBtn');
     const q1=document.getElementById('q1'); const q2=document.getElementById('q2'); const q3=document.getElementById('q3'); const q4=document.getElementById('q4');
-    const grid=document.getElementById('grid');
-    qTotal.textContent=QUESTIONS.length;
 
     startBtn.addEventListener('click', (e)=>{ e.preventDefault(); hero.classList.add('hidden'); app.classList.remove('hidden'); render(); });
 
-    function render(){ if(i>=QUESTIONS.length){ return showResults(); } const q=QUESTIONS[i]; qIndex.textContent=i+1; qText.textContent=q.text; qText.style.animation='none'; void qText.offsetWidth; qText.style.animation='fadeSlide .35s ease forwards'; bar.style.width=((i)/QUESTIONS.length*100).toFixed(1)+'%'; }
-    function blip(btn){ btn.classList.add('flash'); setTimeout(()=>btn.classList.remove('flash'), 350); }
+    function render(){ if(i>=QUESTIONS.length){ return showResults(); } const q=QUESTIONS[i]; counter.textContent=`Question ${i+1}/${QUESTIONS.length}`; qText.textContent=q.text; bar.style.width=((i)/QUESTIONS.length*100).toFixed(1)+'%'; renderAnswers(); }
+
+    function renderAnswers(){
+      answersBox.innerHTML='';
+      const mk=(label,score)=>{ const b=document.createElement('button'); b.className='btn'; b.textContent=label; b.setAttribute('data-score',score); return b; };
+      answersBox.append(
+        mk('Disagree',-2), mk('Slightly Disagree',-1), mk('Slightly Agree',1), mk('Agree',2)
+      );
+    }
+
     function answer(score){ const q=QUESTIONS[i]; const actual=score*q.polarity; state[q.axis]+=actual; state.answers.push({i,score}); i++; if(i>=QUESTIONS.length){ bar.style.width='100%'; showResults(); } else { render(); } }
+
+    answersBox.addEventListener('click',(e)=>{ const b=e.target.closest('button[data-score]'); if(!b) return; b.animate([{transform:'scale(1)'},{transform:'scale(.98)'},{transform:'scale(1)'}],{duration:160}); const score=parseInt(b.getAttribute('data-score'),10); answer(score); });
+    again.addEventListener('click',(e)=>{ e.preventDefault(); reset(true); }); restartBtn.addEventListener('click',()=> reset(false));
 
     function showResults(){
       quizCard.style.display='none'; resultsCard.classList.add('active');
@@ -209,9 +208,10 @@
       (y>=0 ? (x>=0? q1 : q2) : (x<0? q3 : q4)).classList.add('show');
     }
 
-    // === Hard-coded plot insets from calibration ===
-    const PLOT_INSETS = { left:14.4, right:14.1, top:20.3, bottom:10.7 }; // percentages of the grid box
+    function reset(shuffle=false){ i=0; state.ethics=0; state.morality=0; state.answers=[]; if(shuffle){ QUESTIONS.sort(()=>Math.random()-.5); } quizCard.style.display='block'; resultsCard.classList.remove('active'); bar.style.width='0%'; render(); }
 
+    // === Plot calibration (your hard-coded insets) ===
+    const PLOT_INSETS = { left:14.4, right:14.1, top:20.3, bottom:10.7 };
     function placeMarker(x,y,instant){
       const plot=PLOT_INSETS; const innerW=100-plot.left-plot.right; const innerH=100-plot.top-plot.bottom;
       const left=plot.left + ((x+1)*0.5)*innerW; const top=plot.top + ((1-(y+1)*0.5))*innerH;
@@ -227,79 +227,56 @@
       const word = axisWord(axis, norm);
       return `${word} (${pct}%)`;
     }
-
     function quadrantLabel(x,y){
       const ethicsWord = axisWord('ethics', x);
       const moralityWord = axisWord('morality', y);
       if (ethicsWord === 'Neutral' && moralityWord === 'Neutral') return 'True Neutral';
       return `${ethicsWord} ${moralityWord}`;
     }
-
     function clamp(n,a,b){ return Math.max(a, Math.min(b,n)); }
     function axisWord(axis, norm){
-      const eps = 1e-9; // exact zero only; change to e.g. 0.02 if you want a tolerance
+      const eps = 1e-9; // exact zero only
       if (Math.abs(norm) < eps) return 'Neutral';
       if (axis === 'ethics') return norm < 0 ? 'Lawful' : 'Chaotic';
       return norm < 0 ? 'Evil' : 'Good';
     }
-
-    answersBox.addEventListener('click',(e)=>{ const b=e.target.closest('button[data-score]'); if(!b) return; blip(b); const score=parseInt(b.getAttribute('data-score'),10); answer(score); });
-    again.addEventListener('click',(e)=>{ e.preventDefault(); reset(true); }); restartBtn.addEventListener('click',()=> reset(false));
-    function reset(shuffle=false){ i=0; state.ethics=0; state.morality=0; state.answers=[]; if(shuffle){ QUESTIONS.sort(()=>Math.random()-.5); } quizCard.style.display='block'; resultsCard.classList.remove('active'); bar.style.width='0%'; render(); }
-
-    // ---- Tiny self-tests (console) ----
-    (function selfTests(){
-      try{
-        console.assert(axisWord('ethics', 0) === 'Neutral', 'ethics 0 => Neutral');
-        console.assert(axisWord('ethics', 0.5) === 'Chaotic', 'ethics + => Chaotic');
-        console.assert(axisWord('ethics', -0.5) === 'Lawful', 'ethics - => Lawful');
-        console.assert(axisWord('morality', 0) === 'Neutral', 'morality 0 => Neutral');
-        console.assert(quadrantLabel(0,0) === 'True Neutral', '0,0 => True Neutral');
-        console.assert(quadrantLabel(1,0) === 'Chaotic Neutral', '1,0 => Chaotic Neutral');
-        console.assert(quadrantLabel(-1,0.2) === 'Lawful Good', '-1,+ => Lawful Good');
-        console.assert(labelForAxis('ethics', 0, 2) === 'Neutral (0%)', 'label 0% neutral');
-        console.log('%cSelf-tests passed','color:#9fe0ff');
-      }catch(e){ console.error('Self-tests failed', e); }
-    })();
   })();
 
-  // ===== PRISM BACKGROUND (robust loader; never blocks clicks) =====
+  // ===== PRISM BACKGROUND (dependency-free WebGL fallback if needed) =====
   (function(){
     const mount = document.getElementById('prism'); if(!mount) return;
     function hasWebGL(){ try{ const c=document.createElement('canvas'); return !!(c.getContext('webgl')||c.getContext('experimental-webgl')); }catch{ return false; } }
-    function loadScript(url){ return new Promise((res, rej)=>{ const s=document.createElement('script'); s.src=url; s.async=true; s.onload=()=>res(); s.onerror=()=>rej(new Error('Load failed: '+url)); document.head.appendChild(s); }); }
+    if(!hasWebGL()) { initFallback(); return; }
 
-    function initWithOGL(OGL){
-      const { Renderer, Triangle, Program, Mesh } = OGL;
-      const cfg={ height:3.5, baseWidth:5.5, glow:1, noise:0.35, transparent:true, scale:3.6, hueShift:0.0, colorFrequency:1.0, bloom:1, timeScale:0.45 };
-      const H=Math.max(0.001,cfg.height), BW=Math.max(0.001,cfg.baseWidth), BASE_HALF=BW*0.5, GLOW=Math.max(0.0,cfg.glow), NOISE=Math.max(0.0,cfg.noise), SAT=cfg.transparent?1.5:1, SCALE=Math.max(0.001,cfg.scale), HUE=cfg.hueShift||0, CFREQ=Math.max(0.0,cfg.colorFrequency||1), BLOOM=Math.max(0.0,cfg.bloom||1), TS=Math.max(0,cfg.timeScale||1);
-      const dpr=Math.min(2, window.devicePixelRatio||1);
-      const renderer=new Renderer({ dpr, alpha:cfg.transparent, antialias:false }); const gl=renderer.gl;
-      gl.disable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE); gl.disable(gl.BLEND);
-      Object.assign(gl.canvas.style,{position:'absolute', inset:'0', width:'100%', height:'100%', display:'block', zIndex:'0', pointerEvents:'none'});
-      mount.appendChild(gl.canvas);
+    const canvas=document.createElement('canvas'); Object.assign(canvas.style,{position:'absolute', inset:'0', width:'100%', height:'100%', display:'block', zIndex:'0', pointerEvents:'none'}); mount.appendChild(canvas);
+    const gl = canvas.getContext('webgl', { alpha:true, antialias:false }); if(!gl){ initFallback(); return; }
 
-      const vertex = 'attribute vec2 position; void main(){ gl_Position = vec4(position,0.0,1.0);}';
-      const fragment = `precision highp float; uniform vec2 iResolution; uniform float iTime; uniform float uHeight; uniform float uBaseHalf; uniform mat3 uRot; uniform int uUseBaseWobble; uniform float uGlow; uniform float uNoise; uniform float uSaturation; uniform float uScale; uniform float uHueShift; uniform float uColorFreq; uniform float uBloom; uniform float uCenterShift; uniform float uInvBaseHalf; uniform float uInvHeight; uniform float uMinAxis; uniform float uTimeScale; vec4 tanh4(vec4 x){ vec4 e2x=exp(2.0*x); return (e2x-1.0)/(e2x+1.0);} float rand(vec2 co){ return fract(sin(dot(co, vec2(12.9898,78.233)))*43758.5453123);} float sdOctaAnisoInv(vec3 p){ vec3 q=vec3(abs(p.x)*uInvBaseHalf, abs(p.y)*uInvHeight, abs(p.z)*uInvBaseHalf); float m=q.x+q.y+q.z-1.0; return m*uMinAxis*0.5773502691896258;} float sdPyramidUpInv(vec3 p){ float oct=sdOctaAnisoInv(p); float halfSpace=-p.y; return max(oct, halfSpace);} mat3 hueRotation(float a){ float c=cos(a), s=sin(a); mat3 W=mat3(0.299,0.587,0.114, 0.299,0.587,0.114, 0.299,0.587,0.114); mat3 U=mat3(0.701,-0.587,-0.114, -0.299,0.413,-0.114, -0.300,-0.588,0.886); mat3 V=mat3(0.168,-0.331,0.500, 0.328,0.035,-0.500, -0.497,0.296,0.201); return W + U*c + V*s; } void main(){ vec2 res=iResolution; vec2 uv=(gl_FragCoord.xy - 0.5*res.xy)/(res.y*0.1*uScale); float z=5.0; float d=0.0; vec3 p; vec4 o=vec4(0.0); float t=iTime*uTimeScale; mat2 wob=mat2(cos(t), cos(t+33.0), cos(t+11.0), cos(t)); const int STEPS=100; for(int i=0;i<STEPS;i++){ p=vec3(uv, z); p.xz = p.xz * wob; vec3 q=p; q.y+=uCenterShift; d=0.1+0.2*abs(max(sdPyramidUpInv(q), -p.y)); z-=d; o += (sin((p.y+z)*uColorFreq + vec4(0.0,1.0,2.0,3.0)) + 1.0)/d; } o = tanh4(o*o*(uGlow*uBloom)/1e5); vec3 col=o.rgb; float n=rand(gl_FragCoord.xy); col += (n-0.5)*uNoise; col = clamp(col,0.0,1.0); float L = dot(col, vec3(0.2126,0.7152,0.0722)); col = clamp(mix(vec3(L), col, uSaturation), 0.0, 1.0); if(abs(uHueShift) > 0.0001){ col = clamp(hueRotation(uHueShift) * col, 0.0, 1.0); } gl_FragColor = vec4(col, 1.0); }`;
+    const vertSrc = `attribute vec2 a; void main(){ gl_Position = vec4(a,0.0,1.0);} `;
+    const fragSrc = `precision highp float; uniform vec2 iResolution; uniform float iTime; uniform float uHeight; uniform float uBaseHalf; uniform int uUseBaseWobble; uniform float uGlow; uniform float uNoise; uniform float uSaturation; uniform float uScale; uniform float uHueShift; uniform float uColorFreq; uniform float uBloom; uniform float uCenterShift; uniform float uInvBaseHalf; uniform float uInvHeight; uniform float uMinAxis; uniform float uTimeScale; vec4 tanh4(vec4 x){ vec4 e2x=exp(2.0*x); return (e2x-1.0)/(e2x+1.0);} float rand(vec2 co){ return fract(sin(dot(co, vec2(12.9898,78.233)))*43758.5453123);} float sdOctaAnisoInv(vec3 p){ vec3 q=vec3(abs(p.x)*uInvBaseHalf, abs(p.y)*uInvHeight, abs(p.z)*uInvBaseHalf); float m=q.x+q.y+q.z-1.0; return m*uMinAxis*0.5773502691896258;} float sdPyramidUpInv(vec3 p){ float oct=sdOctaAnisoInv(p); float halfSpace=-p.y; return max(oct, halfSpace);} mat3 hueRotation(float a){ float c=cos(a), s=sin(a); mat3 W=mat3(0.299,0.587,0.114, 0.299,0.587,0.114, 0.299,0.587,0.114); mat3 U=mat3(0.701,-0.587,-0.114, -0.299,0.413,-0.114, -0.300,-0.588,0.886); mat3 V=mat3(0.168,-0.331,0.500, 0.328,0.035,-0.500, -0.497,0.296,0.201); return W + U*c + V*s; } void main(){ vec2 res=iResolution; vec2 uv=(gl_FragCoord.xy - 0.5*res.xy)/(res.y*0.1*uScale); float z=5.0; float d=0.0; vec3 p; vec4 o=vec4(0.0); float t=iTime*uTimeScale; mat2 wob = (uUseBaseWobble==1) ? mat2(cos(t), cos(t+33.0), cos(t+11.0), cos(t)) : mat2(1.0); const int STEPS=100; for(int i=0;i<STEPS;i++){ p=vec3(uv, z); p.xz = p.xz * wob; vec3 q=p; q.y+=uCenterShift; d=0.1+0.2*abs(max(sdPyramidUpInv(q), -p.y)); z-=d; o += (sin((p.y+z)*uColorFreq + vec4(0.0,1.0,2.0,3.0)) + 1.0)/d; } o = tanh4(o*o*(uGlow*uBloom)/1e5); vec3 col=o.rgb; float n=rand(gl_FragCoord.xy); col += (n-0.5)*uNoise; col = clamp(col,0.0,1.0); float L = dot(col, vec3(0.2126,0.7152,0.0722)); col = clamp(mix(vec3(L), col, uSaturation), 0.0, 1.0); if(abs(uHueShift) > 0.0001){ col = clamp(hueRotation(uHueShift) * col, 0.0, 1.0); } gl_FragColor = vec4(col, 1.0); }`;
 
-      const geometry = new Triangle(gl);
-      const iResBuf = new Float32Array(2);
-      const program = new Program(gl, { vertex, fragment, uniforms:{ iResolution:{ value:iResBuf }, iTime:{ value:0 }, uHeight:{ value:H }, uBaseHalf:{ value:BASE_HALF }, uUseBaseWobble:{ value:1 }, uRot:{ value:new Float32Array([1,0,0,0,1,0,0,0,1]) }, uGlow:{ value:GLOW }, uNoise:{ value:NOISE }, uSaturation:{ value:SAT }, uScale:{ value:SCALE }, uHueShift:{ value:HUE }, uColorFreq:{ value:CFREQ }, uBloom:{ value:BLOOM }, uCenterShift:{ value:H*0.25 }, uInvBaseHalf:{ value:1/BASE_HALF }, uInvHeight:{ value:1/H }, uMinAxis:{ value:Math.min(BASE_HALF,H) }, uTimeScale:{ value:TS } } });
-      const mesh = new Mesh(gl, { geometry, program });
-      function resize(){ const w=mount.clientWidth||1; const h=mount.clientHeight||1; renderer.setSize(w,h); iResBuf[0]=gl.drawingBufferWidth; iResBuf[1]=gl.drawingBufferHeight; }
-      new ResizeObserver(resize).observe(mount); resize();
-      const t0=performance.now(); function loop(t){ program.uniforms.iTime.value=(t-t0)*0.001; renderer.render({ scene: mesh }); requestAnimationFrame(loop); } requestAnimationFrame(loop);
-      console.info('[Prism] Running with WebGL via OGL');
+    const vs=gl.createShader(gl.VERTEX_SHADER); gl.shaderSource(vs, vertSrc); gl.compileShader(vs);
+    const fs=gl.createShader(gl.FRAGMENT_SHADER); gl.shaderSource(fs, fragSrc); gl.compileShader(fs);
+    const prog=gl.createProgram(); gl.attachShader(prog,vs); gl.attachShader(prog,fs); gl.bindAttribLocation(prog,0,'a'); gl.linkProgram(prog); gl.useProgram(prog);
+
+    const quad = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, quad); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+    const uni = n=>gl.getUniformLocation(prog,n);
+    const u = { iResolution:uni('iResolution'), iTime:uni('iTime'), uHeight:uni('uHeight'), uBaseHalf:uni('uBaseHalf'), uUseBaseWobble:uni('uUseBaseWobble'), uGlow:uni('uGlow'), uNoise:uni('uNoise'), uSaturation:uni('uSaturation'), uScale:uni('uScale'), uHueShift:uni('uHueShift'), uColorFreq:uni('uColorFreq'), uBloom:uni('uBloom'), uCenterShift:uni('uCenterShift'), uInvBaseHalf:uni('uInvBaseHalf'), uInvHeight:uni('uInvHeight'), uMinAxis:uni('uMinAxis'), uTimeScale:uni('uTimeScale') };
+
+    function resize(){ const w=mount.clientWidth||1, h=mount.clientHeight||1; const dpr=Math.min(2, window.devicePixelRatio||1); canvas.width=w*dpr; canvas.height=h*dpr; canvas.style.width=w+'px'; canvas.style.height=h+'px'; gl.viewport(0,0,canvas.width, canvas.height); }
+    new ResizeObserver(resize).observe(mount); resize();
+
+    gl.uniform1f(u.uHeight, 3.5); gl.uniform1f(u.uBaseHalf, 5.5*0.5); gl.uniform1i(u.uUseBaseWobble, 1); gl.uniform1f(u.uGlow, 1.0); gl.uniform1f(u.uNoise, 0.35); gl.uniform1f(u.uSaturation, 1.5); gl.uniform1f(u.uScale, 3.6); gl.uniform1f(u.uHueShift, 0.0); gl.uniform1f(u.uColorFreq, 1.0); gl.uniform1f(u.uBloom, 1.0); gl.uniform1f(u.uCenterShift, 3.5*0.25); gl.uniform1f(u.uInvBaseHalf, 1.0/(5.5*0.5)); gl.uniform1f(u.uInvHeight, 1.0/3.5); gl.uniform1f(u.uMinAxis, Math.min(5.5*0.5,3.5)); gl.uniform1f(u.uTimeScale, 0.45);
+
+    const t0=performance.now();
+    function frame(t){
+      const time=(t-t0)*0.001; gl.uniform2f(u.iResolution, canvas.width, canvas.height); gl.uniform1f(u.iTime, time); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); requestAnimationFrame(frame);
     }
-
-    function initFallback(){ const fb=document.createElement('div'); Object.assign(fb.style,{position:'absolute', inset:'0', background:'radial-gradient(800px 500px at 50% 40%, rgba(60,120,255,.15), transparent 60%), radial-gradient(600px 400px at 50% 70%, rgba(180,60,255,.10), transparent 60%)', animation:'bgpulse 6s ease-in-out infinite', zIndex:'0', pointerEvents:'none'}); mount.appendChild(fb); const style=document.createElement('style'); style.textContent='@keyframes bgpulse{0%,100%{opacity:.8}50%{opacity:1}}'; document.head.appendChild(style); console.info('[Prism] Fallback gradient active'); }
-
-    (async function(){
-      if(!hasWebGL()){ initFallback(); return; }
-      try{ await loadScript('https://cdn.jsdelivr.net/npm/ogl@0.0.110/dist/ogl.umd.js'); if(window.OGL){ initWithOGL(window.OGL); return; } throw new Error('OGL UMD not available'); }
-      catch{ try{ const mod = await import('https://cdn.jsdelivr.net/npm/ogl@0.0.110/dist/ogl.mjs'); initWithOGL(mod); } catch{ initFallback(); } }
-    })();
+    requestAnimationFrame(frame);
   })();
+
+  function initFallback(){ const mount=document.getElementById('prism'); if(!mount) return; const fb=document.createElement('div'); Object.assign(fb.style,{position:'absolute', inset:'0', background:'radial-gradient(800px 500px at 50% 40%, rgba(60,120,255,.15), transparent 60%), radial-gradient(600px 400px at 50% 70%, rgba(180,60,255,.10), transparent 60%)', animation:'bgpulse 6s ease-in-out infinite', zIndex:'0', pointerEvents:'none'}); mount.appendChild(fb); const style=document.createElement('style'); style.textContent='@keyframes bgpulse{0%,100%{opacity:.85}50%{opacity:1}}'; document.head.appendChild(style); }
 </script>
 </body>
 </html>
