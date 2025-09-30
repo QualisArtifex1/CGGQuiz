@@ -17,16 +17,14 @@
     /* HERO / LANDING */
     .hero{position:relative; min-height:100dvh; overflow:hidden; display:grid; place-items:center;}
     .prism-container{position:absolute; inset:0; z-index:0; pointer-events:none}
-    .hero-inner{position:relative; z-index:2; text-align:center; display:grid; gap:14px; align-items:center; justify-items:center}
+    .hero-inner{position:relative; z-index:2; text-align:center; display:grid; gap:10px; align-items:center; justify-items:center}
     .logo{max-width:min(90vw,820px); width:95%; filter:drop-shadow(0 30px 80px rgba(0,180,255,.18))}
-    .hero-badge{margin-top:2px; opacity:.85; font-size:14px; color:#b8cadd}
     .start{display:inline-flex; align-items:center; gap:10px; padding:14px 20px; border-radius:999px; border:1px solid #2a3e55; color:#071018; background:#dff4ff; font-weight:800; letter-spacing:.3px; text-transform:uppercase; text-decoration:none; box-shadow:0 8px 30px rgba(20,120,200,.35)}
     .start:hover{box-shadow:0 12px 40px rgba(60,160,240,.4)}
 
     /* APP WRAPPER */
     .app{width:min(1000px, 100%); margin:0 auto; padding:24px}
-    .header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px}
-    .title{font-weight:700; letter-spacing:.3px; font-size:clamp(18px, 3.3vw, 28px)}
+    .header{display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:16px}
     .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:linear-gradient(90deg, #1d3f51, #1a1d2a); color:var(--muted); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.12em; border:1px solid #203244aa; box-shadow:0 0 0 1px #0b1118 inset, 0 18px 60px rgba(10,20,40,.45)}
 
     /* CARD */
@@ -82,7 +80,13 @@
 
     .badge{position:absolute; transform:translate(-50%, calc(-100% - 10px)); padding:6px 10px; font-weight:800; border-radius:10px; font-size:12px; color:#071018; background:#dff4ff; border:1px solid #89cfff; box-shadow:0 8px 30px rgba(20,120,200,.35); white-space:nowrap}
 
-    @media (max-width:520px){ .answers{grid-template-columns:1fr} }
+    /* simple result stats layout */
+    .xy{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px}
+    .tile{background:#0c141f; border:1px solid #1c2b3d; border-radius:12px; padding:10px}
+    .tile h4{margin:0 0 6px; font-size:12px; color:#9fb3bf; letter-spacing:.08em; text-transform:uppercase}
+    .again{display:inline-block; margin-top:12px; color:#bfe7ff}
+
+    @media (max-width:520px){ .answers{grid-template-columns:1fr} .xy{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
@@ -91,7 +95,6 @@
     <div class="prism-container" id="prism"></div>
     <div class="hero-inner">
       <img class="logo" src="Chaotic Good Guild Logo PGN.png" alt="Chaotic Good Guild logo" />
-      <div class="hero-badge">Personality Alignment Test</div>
       <a href="#" class="start" id="startBtn">Start Personality Test</a>
     </div>
   </section>
@@ -99,7 +102,6 @@
   <!-- QUIZ -->
   <div class="app hidden" id="app">
     <div class="header">
-      <div class="title">Your Personality Alignment</div>
       <div class="pill" id="pill">Question <span id="qIndex">1</span>/<span id="qTotal">—</span></div>
     </div>
 
@@ -207,7 +209,7 @@
       (y>=0 ? (x>=0? q1 : q2) : (x<0? q3 : q4)).classList.add('show');
     }
 
-    // === Hard-coded plot insets from your calibration ===
+    // === Hard-coded plot insets from calibration ===
     const PLOT_INSETS = { left:14.4, right:14.1, top:20.3, bottom:10.7 }; // percentages of the grid box
 
     function placeMarker(x,y,instant){
@@ -235,7 +237,7 @@
 
     function clamp(n,a,b){ return Math.max(a, Math.min(b,n)); }
     function axisWord(axis, norm){
-      const eps = 1e-9;
+      const eps = 1e-9; // exact zero only; change to e.g. 0.02 if you want a tolerance
       if (Math.abs(norm) < eps) return 'Neutral';
       if (axis === 'ethics') return norm < 0 ? 'Lawful' : 'Chaotic';
       return norm < 0 ? 'Evil' : 'Good';
@@ -245,7 +247,7 @@
     again.addEventListener('click',(e)=>{ e.preventDefault(); reset(true); }); restartBtn.addEventListener('click',()=> reset(false));
     function reset(shuffle=false){ i=0; state.ethics=0; state.morality=0; state.answers=[]; if(shuffle){ QUESTIONS.sort(()=>Math.random()-.5); } quizCard.style.display='block'; resultsCard.classList.remove('active'); bar.style.width='0%'; render(); }
 
-    // ---- Tiny self-tests (console) to guard regressions ----
+    // ---- Tiny self-tests (console) ----
     (function selfTests(){
       try{
         console.assert(axisWord('ethics', 0) === 'Neutral', 'ethics 0 => Neutral');
